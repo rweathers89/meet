@@ -1,8 +1,12 @@
 // src/components/NumberOfEvents.js
 
-const NumberOfEvents = ({ setNumberOfEvents, setErrorAlert }) => {
+//import { useState } from 'react';
+
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
+    // const [eventNumber, setEventNumber] = useState();
     const handleInputChaged = (event) => {
         const value = event.target.value;
+        setCurrentNOE(value);
 
         if (isNaN(value)) {
             setErrorAlert('value is not a number');
@@ -12,9 +16,10 @@ const NumberOfEvents = ({ setNumberOfEvents, setErrorAlert }) => {
             setErrorAlert('minimum value is 1');
         } else {
             setErrorAlert('');
-            setNumberOfEvents(value);
+            setCurrentNOE(value);
         }
     };
+
 
     return (
         <div id="number-of-events">
@@ -22,7 +27,7 @@ const NumberOfEvents = ({ setNumberOfEvents, setErrorAlert }) => {
                 type="text"
                 defaultValue={'32'}
                 className="number-of-events-input"
-                // value={eventNumber}
+                //value={eventNumber}
 
                 onChange={handleInputChaged}
             />

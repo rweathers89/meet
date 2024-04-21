@@ -2,11 +2,12 @@ import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents';
 import { render } from '@testing-library/react';
 
+//TDD tests
 describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
     beforeEach(() => {
         NumberOfEventsComponent = render(
-            <NumberOfEvents setNumberOfEvents={() => { }}
+            <NumberOfEvents setCurrentNOE={() => { }}
                 setErrorAlert={() => { }}
             />
         );
@@ -20,6 +21,7 @@ describe('<NumberOfEvents /> component', () => {
     test('32 events are rendered as default', () => {
         const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
         expect(numberTextBox).toHaveValue('32');
+
     });
 
     test('update numberOfEvents when user types', async () => {
@@ -29,4 +31,6 @@ describe('<NumberOfEvents /> component', () => {
         expect(numberTextBox).toHaveValue('10');
     });
 
-})
+});
+
+//Integration tests
